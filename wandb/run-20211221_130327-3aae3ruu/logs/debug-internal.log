@@ -1,0 +1,75 @@
+2021-12-21 13:03:31,411 INFO    MainThread:17504 [internal.py:wandb_internal():87] W&B internal server running at pid: 17504, started at: 2021-12-21 13:03:31.411116
+2021-12-21 13:03:31,417 INFO    WriterThread:17504 [datastore.py:open_for_write():77] open: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\run-3aae3ruu.wandb
+2021-12-21 13:03:31,418 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: check_version
+2021-12-21 13:03:31,425 DEBUG   SenderThread:17504 [sender.py:send():234] send: header
+2021-12-21 13:03:31,425 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: check_version
+2021-12-21 13:03:32,288 DEBUG   SenderThread:17504 [sender.py:send():234] send: run
+2021-12-21 13:03:32,318 INFO    SenderThread:17504 [sender.py:_maybe_setup_resume():484] checking resume status for None/yolo_out_dir/3aae3ruu
+2021-12-21 13:03:35,049 INFO    SenderThread:17504 [dir_watcher.py:__init__():169] watching files in: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files
+2021-12-21 13:03:35,049 INFO    SenderThread:17504 [sender.py:_start_run_threads():804] run started: 3aae3ruu with start time 1640073808
+2021-12-21 13:03:35,073 DEBUG   SenderThread:17504 [sender.py:send():234] send: summary
+2021-12-21 13:03:35,074 INFO    SenderThread:17504 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2021-12-21 13:03:35,076 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: run_start
+2021-12-21 13:03:36,059 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\wandb-summary.json
+2021-12-21 13:03:40,002 DEBUG   HandlerThread:17504 [meta.py:__init__():40] meta init
+2021-12-21 13:03:40,005 DEBUG   HandlerThread:17504 [meta.py:__init__():54] meta init done
+2021-12-21 13:03:40,005 DEBUG   HandlerThread:17504 [meta.py:probe():214] probe
+2021-12-21 13:03:40,006 DEBUG   HandlerThread:17504 [meta.py:_save_pip():58] save pip
+2021-12-21 13:03:40,007 DEBUG   HandlerThread:17504 [meta.py:_save_pip():72] save pip done
+2021-12-21 13:03:40,007 DEBUG   HandlerThread:17504 [meta.py:_save_conda():79] save conda
+2021-12-21 13:03:40,014 ERROR   HandlerThread:17504 [meta.py:_save_conda():88] Error saving conda packages
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\site-packages\wandb\sdk\internal\meta.py", line 84, in _save_conda
+    subprocess.call(
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2021-12-21 13:03:40,016 DEBUG   HandlerThread:17504 [meta.py:_save_conda():89] save conda done
+2021-12-21 13:03:40,016 DEBUG   HandlerThread:17504 [meta.py:probe():252] probe done
+2021-12-21 13:03:40,039 DEBUG   SenderThread:17504 [sender.py:send():234] send: files
+2021-12-21 13:03:40,039 INFO    SenderThread:17504 [sender.py:_save_file():939] saving file wandb-metadata.json with policy now
+2021-12-21 13:03:40,057 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:03:40,059 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:03:40,107 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\requirements.txt
+2021-12-21 13:03:40,108 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\conda-environment.yaml
+2021-12-21 13:03:40,109 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\wandb-metadata.json
+2021-12-21 13:03:40,109 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\output.log
+2021-12-21 13:03:41,130 DEBUG   SenderThread:17504 [sender.py:send():234] send: config
+2021-12-21 13:03:42,075 INFO    Thread-11 :17504 [upload_job.py:push():137] Uploaded file C:\Users\AHMADI~1\AppData\Local\Temp\tmp027jtyymwandb\19g4bcyi-wandb-metadata.json
+2021-12-21 13:03:42,129 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\output.log
+2021-12-21 13:03:56,136 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:03:56,136 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:04:03,338 INFO    Thread-8  :17504 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_130327-3aae3ruu\files\config.yaml
+2021-12-21 13:04:10,951 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:04:12,192 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:04:12,193 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:04:28,661 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:04:28,662 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:04:43,818 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:04:44,695 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:04:44,695 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:05:00,772 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:05:00,772 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:05:16,656 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:05:16,853 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:05:16,853 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:05:32,904 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:05:32,905 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:05:48,950 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:05:48,950 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:05:49,997 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:06:05,008 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:06:05,009 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:06:21,448 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:06:21,449 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:06:23,448 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:06:37,500 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:06:37,501 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:06:53,935 DEBUG   HandlerThread:17504 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:06:53,935 DEBUG   SenderThread:17504 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:06:56,394 DEBUG   SenderThread:17504 [sender.py:send():234] send: stats
+2021-12-21 13:07:03,100 WARNING MainThread:17504 [internal.py:wandb_internal():146] Internal process interrupt: 1

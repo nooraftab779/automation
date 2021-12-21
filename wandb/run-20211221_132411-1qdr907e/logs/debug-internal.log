@@ -1,0 +1,99 @@
+2021-12-21 13:24:13,025 INFO    MainThread:15060 [internal.py:wandb_internal():87] W&B internal server running at pid: 15060, started at: 2021-12-21 13:24:12.967789
+2021-12-21 13:24:13,029 INFO    WriterThread:15060 [datastore.py:open_for_write():77] open: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\run-1qdr907e.wandb
+2021-12-21 13:24:13,030 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: check_version
+2021-12-21 13:24:13,034 DEBUG   SenderThread:15060 [sender.py:send():234] send: header
+2021-12-21 13:24:13,034 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: check_version
+2021-12-21 13:24:14,347 DEBUG   SenderThread:15060 [sender.py:send():234] send: run
+2021-12-21 13:24:14,369 INFO    SenderThread:15060 [sender.py:_maybe_setup_resume():484] checking resume status for None/yolo_out_dir/1qdr907e
+2021-12-21 13:24:17,052 INFO    SenderThread:15060 [dir_watcher.py:__init__():169] watching files in: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files
+2021-12-21 13:24:17,052 INFO    SenderThread:15060 [sender.py:_start_run_threads():804] run started: 1qdr907e with start time 1640075051
+2021-12-21 13:24:17,088 DEBUG   SenderThread:15060 [sender.py:send():234] send: summary
+2021-12-21 13:24:17,091 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: run_start
+2021-12-21 13:24:17,107 INFO    SenderThread:15060 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2021-12-21 13:24:18,064 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\wandb-summary.json
+2021-12-21 13:24:21,729 DEBUG   HandlerThread:15060 [meta.py:__init__():40] meta init
+2021-12-21 13:24:21,733 DEBUG   HandlerThread:15060 [meta.py:__init__():54] meta init done
+2021-12-21 13:24:21,733 DEBUG   HandlerThread:15060 [meta.py:probe():214] probe
+2021-12-21 13:24:21,733 DEBUG   HandlerThread:15060 [meta.py:_save_pip():58] save pip
+2021-12-21 13:24:21,735 DEBUG   HandlerThread:15060 [meta.py:_save_pip():72] save pip done
+2021-12-21 13:24:21,735 DEBUG   HandlerThread:15060 [meta.py:_save_conda():79] save conda
+2021-12-21 13:24:21,740 ERROR   HandlerThread:15060 [meta.py:_save_conda():88] Error saving conda packages
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\site-packages\wandb\sdk\internal\meta.py", line 84, in _save_conda
+    subprocess.call(
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2021-12-21 13:24:21,742 DEBUG   HandlerThread:15060 [meta.py:_save_conda():89] save conda done
+2021-12-21 13:24:21,742 DEBUG   HandlerThread:15060 [meta.py:probe():252] probe done
+2021-12-21 13:24:21,757 DEBUG   SenderThread:15060 [sender.py:send():234] send: files
+2021-12-21 13:24:21,757 INFO    SenderThread:15060 [sender.py:_save_file():939] saving file wandb-metadata.json with policy now
+2021-12-21 13:24:21,772 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:24:21,772 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:24:22,095 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:24:22,096 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\conda-environment.yaml
+2021-12-21 13:24:22,097 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\requirements.txt
+2021-12-21 13:24:22,098 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\wandb-metadata.json
+2021-12-21 13:24:22,841 DEBUG   SenderThread:15060 [sender.py:send():234] send: config
+2021-12-21 13:24:24,115 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:24:26,511 INFO    Thread-11 :15060 [upload_job.py:push():137] Uploaded file C:\Users\AHMADI~1\AppData\Local\Temp\tmp9erddhhxwandb\f7f7r8mb-wandb-metadata.json
+2021-12-21 13:24:37,849 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:24:37,849 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:24:45,341 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\config.yaml
+2021-12-21 13:24:48,375 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:24:50,399 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:24:52,417 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:24:53,517 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:24:53,932 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:24:53,933 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:25:10,016 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:25:10,016 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:25:26,071 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:25:26,072 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:25:27,145 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:25:42,147 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:25:42,147 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:25:58,186 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:25:58,186 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:25:59,967 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:26:14,303 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:26:14,303 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:26:23,328 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:26:30,422 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:26:30,423 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:26:36,215 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:26:46,493 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:26:46,493 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:26:47,593 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:27:02,533 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:27:02,533 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:27:09,462 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:27:18,594 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:27:18,594 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:27:34,658 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:27:34,659 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:27:42,737 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:27:50,733 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:27:50,734 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:28:06,794 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:28:06,794 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:28:11,317 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:13,341 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:16,886 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:28:22,853 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:28:22,854 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:28:25,483 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:32,556 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:38,936 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:28:38,937 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:28:42,664 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:50,344 DEBUG   SenderThread:15060 [sender.py:send():234] send: stats
+2021-12-21 13:28:52,773 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:28:55,021 DEBUG   HandlerThread:15060 [handler.py:handle_request():130] handle_request: stop_status
+2021-12-21 13:28:55,022 DEBUG   SenderThread:15060 [sender.py:send_request():248] send_request: stop_status
+2021-12-21 13:29:03,910 INFO    Thread-8  :15060 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_132411-1qdr907e\files\output.log
+2021-12-21 13:29:04,384 WARNING MainThread:15060 [internal.py:wandb_internal():146] Internal process interrupt: 1

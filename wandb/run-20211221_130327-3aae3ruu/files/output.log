@@ -1,0 +1,58 @@
+Overriding model.yaml nc=80 with nc=2
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Conv                      [3, 32, 6, 2, 2]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  2    115712  models.common.C3                        [128, 128, 2]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1   1182720  models.common.C3                        [512, 512, 1]
+  9                -1  1    656896  models.common.SPPF                      [512, 512, 5]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     18879  models.yolo.Detect                      [2, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [128, 256, 512]]
+Model Summary: 270 layers, 7025023 parameters, 7025023 gradients
+Transferred 57/349 items from C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\weights\yolov5x.pt
+freezing model.0.conv.weight
+freezing model.0.bn.weight
+freezing model.0.bn.bias
+Scaled weight_decay = 0.00046875
+[34m[1moptimizer:[39m[22m SGD with parameter groups 57 weight, 60 weight (no decay), 60 bias
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\utils\datasets.py", line 411, in __init__
+    assert self.img_files, f'{prefix}No images found'
+AssertionError: [34m[1mtrain: [39m[22mNo images found
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "C:\ProgramData\Anaconda3\envs\dumm\lib\threading.py", line 910, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\main.py", line 73, in handle_client
+    yolo()
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\automation.py", line 505, in yolo
+    train.main(opt)
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\train.py", line 523, in main
+    train(opt.hyp, opt, device, callbacks)
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\train.py", line 213, in train
+    train_loader, dataset = create_dataloader(train_path, imgsz, batch_size // WORLD_SIZE, gs, single_cls,
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\utils\datasets.py", line 101, in create_dataloader
+    dataset = LoadImagesAndLabels(path, imgsz, batch_size,
+  File "C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\obj_detection\utils\datasets.py", line 413, in __init__
+    raise Exception(f'{prefix}Error loading data from {path}: {e}\nSee {HELP_URL}')
+Exception: [34m[1mtrain: [39m[22mError loading data from C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\data\output\train: [34m[1mtrain: [39m[22mNo images found

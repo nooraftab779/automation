@@ -1,0 +1,13 @@
+{
+    "os": "Windows-10-10.0.19043-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2021-12-21T08:24:21.733264",
+    "startedAt": "2021-12-21T08:24:11.483557",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\main.py",
+    "codePath": "main.py"
+}

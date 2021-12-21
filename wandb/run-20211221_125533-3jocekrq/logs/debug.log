@@ -1,0 +1,24 @@
+2021-12-21 12:55:33,125 INFO    Thread-2  :15684 [wandb_setup.py:_flush():71] setting env: {}
+2021-12-21 12:55:33,125 INFO    Thread-2  :15684 [wandb_setup.py:_flush():71] setting login settings: {'login_timeout': 30}
+2021-12-21 12:55:33,125 INFO    Thread-2  :15684 [wandb_setup.py:_flush():71] setting login settings: {}
+2021-12-21 12:55:33,126 INFO    Thread-2  :15684 [wandb_init.py:_log_setup():371] Logging user logs to C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_125533-3jocekrq\logs\debug.log
+2021-12-21 12:55:33,126 INFO    Thread-2  :15684 [wandb_init.py:_log_setup():372] Logging internal logs to C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\wandb\run-20211221_125533-3jocekrq\logs\debug-internal.log
+2021-12-21 12:55:33,128 INFO    Thread-2  :15684 [wandb_init.py:init():404] calling init triggers
+2021-12-21 12:55:33,128 INFO    Thread-2  :15684 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {'adam': False, 'artifact_alias': 'latest', 'batch_size': 20, 'bbox_interval': -1, 'bucket': '', 'cache': False, 'cfg': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\obj_detection\\models\\yolov5s.yaml', 'data': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\obj_detection\\data\\coco128.yaml', 'device': 'cpu', 'entity': None, 'epochs': 1, 'evolve': None, 'exist_ok': False, 'hyp': {'lr0': 0.01, 'lrf': 0.1, 'momentum': 0.937, 'weight_decay': 0.0005, 'warmup_epochs': 3.0, 'warmup_momentum': 0.8, 'warmup_bias_lr': 0.1, 'box': 0.05, 'cls': 0.5, 'cls_pw': 1.0, 'obj': 1.0, 'obj_pw': 1.0, 'iou_t': 0.2, 'anchor_t': 4.0, 'fl_gamma': 0.0, 'hsv_h': 0.015, 'hsv_s': 0.7, 'hsv_v': 0.4, 'degrees': 0.0, 'translate': 0.1, 'scale': 0.5, 'shear': 0.0, 'perspective': 0.0, 'flipud': 0.0, 'fliplr': 0.5, 'mosaic': 1.0, 'mixup': 0.0, 'copy_paste': 0.0}, 'image_weights': False, 'imgsz': 416, 'label_smoothing': 0.0, 'linear_lr': False, 'local_rank': -1, 'multi_scale': False, 'name': 'exp', 'noautoanchor': False, 'nosave': False, 'noval': False, 'project': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\yolo_out_dir', 'quad': False, 'rect': False, 'resume': False, 'save_period': -1, 'single_cls': False, 'sync_bn': False, 'upload_dataset': False, 'weights': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\obj_detection\\weights\\yolov5x.pt', 'workers': 8, 'freeze': 1, 'patience': False, 'save_dir': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\yolo_out_dir\\exp5'}
+2021-12-21 12:55:33,129 INFO    Thread-2  :15684 [wandb_init.py:init():460] starting backend
+2021-12-21 12:55:33,129 INFO    Thread-2  :15684 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=spawn, using: spawn
+2021-12-21 12:55:33,139 INFO    Thread-2  :15684 [backend.py:ensure_launched():216] starting backend process...
+2021-12-21 12:55:33,271 INFO    Thread-2  :15684 [backend.py:ensure_launched():221] started backend process with pid: 9300
+2021-12-21 12:55:33,272 INFO    Thread-2  :15684 [wandb_init.py:init():469] backend started and connected
+2021-12-21 12:55:33,319 INFO    Thread-2  :15684 [wandb_init.py:init():533] updated telemetry
+2021-12-21 12:55:33,320 INFO    Thread-2  :15684 [wandb_init.py:init():563] communicating current version
+2021-12-21 12:55:35,853 INFO    Thread-2  :15684 [wandb_init.py:init():568] got version response 
+2021-12-21 12:55:35,854 INFO    Thread-2  :15684 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2021-12-21 12:55:38,620 INFO    Thread-2  :15684 [wandb_init.py:init():606] starting run threads in backend
+2021-12-21 12:55:43,274 INFO    Thread-2  :15684 [wandb_run.py:_console_start():1810] atexit reg
+2021-12-21 12:55:43,277 INFO    Thread-2  :15684 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.WRAP
+2021-12-21 12:55:43,277 INFO    Thread-2  :15684 [wandb_run.py:_redirect():1721] Wrapping output streams.
+2021-12-21 12:55:43,279 INFO    Thread-2  :15684 [wandb_run.py:_redirect():1745] Redirects installed.
+2021-12-21 12:55:43,279 INFO    Thread-2  :15684 [wandb_init.py:init():633] run started, returning control to user process
+2021-12-21 12:55:43,287 INFO    Thread-2  :15684 [wandb_run.py:_config_callback():956] config_cb None None {'data_dict': {'names': ['cat', 'dog'], 'nc': 2, 'train': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\automatic_training\\output\\train', 'val': 'C:\\Users\\Ahmad Imam\\Desktop\\pyrpjects\\server\\automation\\automatic_training\\output\\val'}}
