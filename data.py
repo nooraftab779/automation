@@ -5,7 +5,7 @@ from pathlib import Path
 import os
 parentdir = Path(os.getcwd())
 
-labels=os.path.join(os.path.join(os.path.join(parentdir,"UNET"),"train"),"masks")
+labels=os.path.join(os.path.join(os.path.join(os.path.join(parentdir,"UNET"),"train"),"masks"),"images")
 class dataProcess(object):
     def __init__(self, out_rows, out_cols, data_path="./UNET/train/images", label_path=(f'{labels}'),
                  test_path="./UNET/test/images", npy_path="./UNET/npydata", img_type="jpg"):

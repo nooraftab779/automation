@@ -357,7 +357,7 @@ def yoloannotation():
                            'coco128.yaml')
     print(yamlloc)
 
-    with open(f'{yamlloc}', encoding="utf8") as f:
+    with open(f'{yamlloc}', encoding="utf-8") as f:
         doc = yaml.load(f, Loader=yaml.FullLoader)
     doc['train'] = os.path.join(os.path.join(os.path.join(parentdir, yo), 'output'), 'train')
     doc['val'] = os.path.join(os.path.join(os.path.join(parentdir,yo), 'output'), 'val')

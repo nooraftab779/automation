@@ -6,8 +6,8 @@ from sklearn.pipeline import make_pipeline
 import glob
 import os
 from pathlib import Path
+# from custom import supertrain
 # q = queue.Queue()
-# from custom import train
 # from custom import train
 from automation import *
 from unet import *
@@ -24,7 +24,7 @@ SEPARATOR = "<SEPARATOR>"
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
     while True:
-        received = conn.recv(SIZE).decode()
+        received = conn.recv(SIZE).decode('utf-8')
         print(received)
         if(received):
             filename, filesize = received.split(SEPARATOR)
@@ -52,13 +52,25 @@ def handle_client(conn, addr):
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
                 time.sleep(1)
                 print("Waiting Untill UNET is Complted")
-            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}Yolo.txt"):
+            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}yolo.txt"):
                 time.sleep(1)
                 print("Waiting Untill YOLO is Complted")
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}MRCNN.txt"):
                 time.sleep(1)
                 print("Waiting Untill MRCNN is Complted")
             Hello()
+        # if "mrcnn" in filename:
+        #     MrCnnParsing()
+        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
+        #         time.sleep(1)
+        #         print("Waiting Untill UNET is Complted")
+        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}Yolo.txt"):
+        #         time.sleep(1)
+        #         print("Waiting Untill YOLO is Complted")
+        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}MRCNN.txt"):
+        #         time.sleep(1)
+        #         print("Waiting Untill MRCNN is Complted")
+        #     supertrain()
         if "yolov" in filename:
             yoloannotation()
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
