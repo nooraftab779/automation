@@ -1,0 +1,6 @@
+names:
+- cat
+- dog
+nc: 2
+train: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\automatic_training\output\train
+val: C:\Users\Ahmad Imam\Desktop\pyrpjects\server\automation\automatic_training\output\val
