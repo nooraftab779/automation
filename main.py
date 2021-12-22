@@ -6,7 +6,7 @@ from sklearn.pipeline import make_pipeline
 import glob
 import os
 from pathlib import Path
-# from custom import supertrain
+
 # q = queue.Queue()
 # from custom import train
 from automation import *
@@ -24,7 +24,7 @@ SEPARATOR = "<SEPARATOR>"
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
     while True:
-        received = conn.recv(SIZE).decode('utf-8')
+        received = conn.recv(SIZE).decode('ISO-8859-1')
         print(received)
         if(received):
             filename, filesize = received.split(SEPARATOR)
@@ -44,10 +44,13 @@ def handle_client(conn, addr):
                     progress.update(len(bytes_read))
 #         t = threading.currentThread()
         print(filename)
+        aug=False
         if "aug" in filename:
-            augmentationdata()
+            aug=True
+            augmentationdata(aug)
+           
         if "unet" in filename:
-            UnetMasks()
+            UnetMasks(aug)
             data()
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
                 time.sleep(1)
@@ -59,24 +62,24 @@ def handle_client(conn, addr):
                 time.sleep(1)
                 print("Waiting Untill MRCNN is Complted")
             Hello()
-        # if "mrcnn" in filename:
-        #     MrCnnParsing()
-        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
-        #         time.sleep(1)
-        #         print("Waiting Untill UNET is Complted")
-        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}Yolo.txt"):
-        #         time.sleep(1)
-        #         print("Waiting Untill YOLO is Complted")
-        #     while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}MRCNN.txt"):
-        #         time.sleep(1)
-        #         print("Waiting Untill MRCNN is Complted")
-        #     supertrain()
-        if "yolov" in filename:
-            yoloannotation()
+        if "mrcnn" in filename:
+            MrCnnParsing(aug)
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
                 time.sleep(1)
                 print("Waiting Untill UNET is Complted")
-            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}Yolo.txt"):
+            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}yolo.txt"):
+                time.sleep(1)
+                print("Waiting Untill YOLO is Complted")
+            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}MRCNN.txt"):
+                time.sleep(1)
+                print("Waiting Untill MRCNN is Complted")
+            import custom
+        if "yolov" in filename:
+            yoloannotation(aug)
+            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}UNET.txt"):
+                time.sleep(1)
+                print("Waiting Untill UNET is Complted")
+            while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}yolo.txt"):
                 time.sleep(1)
                 print("Waiting Untill YOLO is Complted")
             while os.path.exists(f"{parentdir}{os.path.sep}current training{os.path.sep}MRCNN.txt"):

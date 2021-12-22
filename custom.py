@@ -13,8 +13,10 @@ import skimage
 from itertools import chain
 from pathlib import Path
 
+
 # Root directory of the project
 ROOT_DIR = Path(os.getcwd())
+print(ROOT_DIR)
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
@@ -26,6 +28,11 @@ COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 # through the command line argument --logs
 DEFAULT_LOGS_DIR = os.path.join(os.path.join(ROOT_DIR, "MRCNN_OUT"), "logs")
 
+
+file = f'{ROOT_DIR}{os.path.sep}current training{os.path.sep}MRCNN.txt'
+print("Creating File")
+print(file)
+open(file, 'a').close()
 
 class CustomConfig(Config):
     """Configuration for training on the custom  dataset.
@@ -175,19 +182,19 @@ def train(model):
                 epochs=2,
                 layers='heads')
 
+config = CustomConfig()
+model = modellib.MaskRCNN(mode="training", config=config,
+                            model_dir=DEFAULT_LOGS_DIR)
 
-def supertrain():
-    config = CustomConfig()
-    model = modellib.MaskRCNN(mode="training", config=config,
-                              model_dir=DEFAULT_LOGS_DIR)
+weights_path = COCO_WEIGHTS_PATH
+# Download weights file
+if not os.path.exists(weights_path):
+    utils.download_trained_weights(weights_path)
 
-    weights_path = COCO_WEIGHTS_PATH
-    # Download weights file
-    if not os.path.exists(weights_path):
-        utils.download_trained_weights(weights_path)
+model.load_weights(weights_path, by_name=True, exclude=[
+    "mrcnn_class_logits", "mrcnn_bbox_fc",
+    "mrcnn_bbox", "mrcnn_mask"])
 
-    model.load_weights(weights_path, by_name=True, exclude=[
-        "mrcnn_class_logits", "mrcnn_bbox_fc",
-        "mrcnn_bbox", "mrcnn_mask"])
+train(model)
+os.remove(file)
 
-    train(model)

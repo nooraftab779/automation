@@ -18,7 +18,7 @@ import zipfile
 import yaml
 import concurrent.futures
 import argparse
-from obj_detection import train
+#from obj_detection import train
 
 
 
@@ -38,11 +38,15 @@ def json_from_dir(source_dir):
 
 def rotate(image_array: ndarray, angle):
     return ndimage.rotate(image_array, angle, reshape=True, order=0)
-def getPoints():
+def getPoints(aug):
     new_annotations_data, annotations_data, root_dir, dest_dir, zipfilename,yo = LoadData()
     images_data = get_images(yo)
-    images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
-                              'annoatations.json')
+    if aug==True:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
+                              'annotations.json')
+    else:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'),
+                              'annotations.json')
     data = open(f'{images_aug}').read()
     data = json.loads(data)
     dt={}
@@ -122,11 +126,16 @@ def transform_regions(regions, rotation_matrix, w, h):
     return r_list
 
 
-def get_images(yo):
+def get_images(yo,aug):
     print(yo)
-    images = os.listdir(os.path.join(os.path.join(os.path.join(os.getcwd(),yo),'images_augmented')))
-    temp = {}
-    img_aug = os.path.join(os.path.join(os.getcwd(),yo),'images_augmented')
+    if aug==True:
+        images = os.listdir(os.path.join(os.path.join(os.path.join(os.getcwd(),yo),'images_augmented')))
+        temp = {}
+        img_aug = os.path.join(os.path.join(os.getcwd(),yo),'images_augmented')
+    else:
+        images = os.listdir(os.path.join(os.path.join(os.path.join(os.getcwd(),yo),'images_augmented')))
+        temp = {}
+        img_aug = os.path.join(os.path.join(os.getcwd(),yo),'images')
 
     for i in images:
         try:
@@ -169,8 +178,11 @@ def making_directories():
         os.mkdir('labels')
 
 
-def copying_images(yo):
-    src = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'))
+def copying_images(yo,aug):
+    if aug==True:
+        src = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'))
+    else:
+        src = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'))
     dst = os.path.join(os.path.join(os.path.join(parentdir, yo), "split"), "images")
     myList = os.listdir(src)
     myList.remove(myList[len(myList) - 1])
@@ -201,7 +213,7 @@ def splitting_train_test(yo):
     os.chdir(os.path.join(parentdir, yo))
     splitfolders.ratio('split', output="output", seed=1337, ratio=(.8, 0.2))
 
-def LoadData():
+def LoadData(aug):
     zipfilename = ''
     filepath = ''
     for subdir, dirs, files in os.walk(os.path.join(parentdir, 'zipfolder')):
@@ -218,8 +230,13 @@ def LoadData():
         zip_ref.extractall(parentdir)
     # shutil.unpack_archive(filepath, parentdir)
     yo= firstindex.filename.split('/')[0]
-    root_dir = os.path.join(os.path.join(parentdir, yo), 'images')
-    dest_dir = root_dir.rstrip("/") + "_augmented"
+    if aug == True:
+        root_dir = os.path.join(os.path.join(parentdir, yo), 'images')
+        dest_dir = root_dir.rstrip("/") + "_augmented"
+    else:
+        root_dir = os.path.join(os.path.join(parentdir, yo), 'images')
+        dest_dir = root_dir
+
 
     print(f"dest:{dest_dir}")
     print(f"root:{root_dir}")
@@ -228,7 +245,7 @@ def LoadData():
         os.mkdir(dest_dir)
 
     json_path = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'),
-                             'annotation.json')
+                             'annotations.json')
     with open(json_path) as f:
         annotations_data = json.load(f)
 
@@ -242,8 +259,8 @@ def LoadData():
 def make_json(path,data):
     with open(path, "w") as f:
         json.dump(data, f)
-def augmentationdata():
-    new_annotations_data,annotations_data,root_dir,dest_dir,zipfilename,yo =  LoadData()
+def augmentationdata(aug):
+    new_annotations_data,annotations_data,root_dir,dest_dir,zipfilename,yo =  LoadData(aug)
     def download(img, angle, im_name,dest_dir,cx,cy,height,width):
         augmented, aug_im_name = augment_image(img, angle, im_name)
         aug_im_name=aug_im_name.split('.')[0]
@@ -280,12 +297,12 @@ def augmentationdata():
             cy = height//2
             with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
                 executor.submit(getImg,img, im_name,dest_dir,cx,cy,height,width)
-    aug_json_path = os.path.join(dest_dir,"annoatations.json")
+    aug_json_path = os.path.join(dest_dir,"annotations.json")
     with open(aug_json_path,"w") as f:
         json.dump(new_annotations_data,f)
         print("Done saving in "+dest_dir)
 
-def yoloannotation():
+def yoloannotation(aug):
     zipfilename = ''
     filepath = ''
     for subdir, dirs, files in os.walk(os.path.join(parentdir, 'zipfolder')):
@@ -300,9 +317,14 @@ def yoloannotation():
         # shutil.unpack_archive(filepath, parentdir)
     yo = firstindex.filename.split('/')[0]
 
-    images_data = get_images(yo)
-    images_aug = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images_augmented'),
-                              'annoatations.json')
+    images_data = get_images(yo,aug)
+    if aug==True:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images_augmented'),
+                              'annotations.json')
+    else:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images'),
+                              'annotations.json')
+    
     data = open(f'{images_aug}').read()
     data = json.loads(data)
     os.remove(filepath)
@@ -315,8 +337,11 @@ def yoloannotation():
             class_name = list(region['region_attributes']['class'].keys())[0]
             # print(filename, all_points_x, all_points_y,class_name)
             all_points_x.extend(all_points_y)
-    os.chdir(os.path.join(os.path.join(parentdir, yo), 'images_augmented'))
-    if os.path.exists('annoatations.json'):
+    if aug==True:
+        os.chdir(os.path.join(os.path.join(parentdir, yo), 'images_augmented'))
+    else:
+        os.chdir(os.path.join(os.path.join(parentdir, yo), 'images'))
+    if os.path.exists('annotations.json'):
         count = 0
         class_dt = {}
         os.chdir(os.path.join(parentdir, yo))
@@ -347,11 +372,18 @@ def yoloannotation():
             f.close()
 
     os.chdir(os.path.join(parentdir, yo))
-    if len(os.listdir('images_augmented')) - 1 == len(os.listdir("yolo_annotation")):
-        making_directories()
-        copying_images(yo)
-        copying_text(yo)
-        splitting_train_test(yo)
+    if aug==True:
+        if len(os.listdir('images_augmented')) - 1 == len(os.listdir("yolo_annotation")):
+            making_directories()
+            copying_images(yo,aug)
+            copying_text(yo)
+            splitting_train_test(yo)
+    else:
+        if len(os.listdir('images')) - 1 == len(os.listdir("yolo_annotation")):
+            making_directories()
+            copying_images(yo,aug)
+            copying_text(yo)
+            splitting_train_test(yo)
 
     yamlloc = os.path.join(os.path.join(os.path.join(parentdir, 'obj_detection'), 'data'),
                            'coco128.yaml')
@@ -404,16 +436,20 @@ def add_dir(path):
 #          shutil.copy(img_path,'automatic_training/test/images')
 #          shutil.copy(mask_path, 'automatic_training/test/masks')
 
-def UnetMasks():
-    new_annotations_data, annotations_data, root_dir, dest_dir,zipfilename,yo = LoadData()
+def UnetMasks(aug):
+    new_annotations_data, annotations_data, root_dir, dest_dir,zipfilename,yo = LoadData(aug)
 
     add_dir(f"{parentdir}{os.path.sep}UNET{os.path.sep}train{os.path.sep}images")
     add_dir(f"{parentdir}{os.path.sep}UNET{os.path.sep}train{os.path.sep}masks")
     add_dir(f"{parentdir}{os.path.sep}UNET{os.path.sep}train{os.path.sep}masks{os.path.sep}images")
     # split_path= os.path.join(os.path.join(os.path.join(parentdir, "UNET"),"data"),"split")
     mask_dest_dir = os.path.join(os.path.join(os.path.join(os.path.join(parentdir, "UNET"),"train"),"masks"),"images")
-    images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
-                              'annoatations.json')
+    if aug==True:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
+                              'annotations.json')
+    else:
+        images_aug = os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'),
+                              'annotations.json')
     data = open(f'{images_aug}').read()
     filenames = []
     data = json.loads(data)
@@ -423,8 +459,12 @@ def UnetMasks():
     print(len(all_points))
     k = 0
     for p, l, f in zip(all_points, all_class, filenames):
-        im = cv2.imread(
+        if aug==True:
+            im = cv2.imread(
             os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'), f), 0)
+        else:
+            im = cv2.imread(
+            os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'), f), 0)
         blank = np.zeros(shape=(im.shape[0], im.shape[1]), dtype=np.float32)
         k = 0
         for j in p:
@@ -435,7 +475,10 @@ def UnetMasks():
             cv2.fillPoly(blank, [points], 255)
         f=f.split('.')[0]
         cv2.imwrite(f'{mask_dest_dir}/{f}.jpg', blank)
-    src = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images_augmented'))
+    if aug==True:
+        src = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images_augmented'))
+    else:
+        src = os.path.join(os.path.join(os.path.join(parentdir,yo), 'images'))
     dst = os.path.join(os.path.join(os.path.join(parentdir, "UNET"),"train"),"images")
     myList= os.listdir(src)
     myList.remove(myList[len(myList) - 1])
@@ -446,10 +489,14 @@ def UnetMasks():
             shutil.copytree(s, d, False, None)
         else:
             shutil.copy2(s, d)
-def MrCnnParsing():
-    new_annotations_data, annotations_data, root_dir, dest_dir, zipfilename,yo = LoadData()
-    js = json.load(open(os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
-                              'annoatations.json')))
+def MrCnnParsing(aug):
+    new_annotations_data, annotations_data, root_dir, dest_dir, zipfilename,yo = LoadData(aug)
+    if aug==True:
+        js = json.load(open(os.path.join(os.path.join(os.path.join(parentdir, yo), 'images_augmented'),
+                              'annotations.json')))
+    else:
+        js = json.load(open(os.path.join(os.path.join(os.path.join(parentdir, yo), 'images'),
+                              'annotations.json')))
     js = js['_via_img_metadata'].values()
     df = pd.DataFrame(js)
     df = df.set_index(df['filename'] + df['size'].astype(str))
@@ -461,21 +508,35 @@ def MrCnnParsing():
     add_dir(f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}val')
     with open(f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}train{os.path.sep}data.json', "w") as json_file:
         json.dump(data, json_file)
-    for a in an:
-        if a['filename']:
-            shutil.copy(f'{parentdir}{os.path.sep}{yo}{os.path.sep}images_augmented{os.path.sep}' + a['filename'],
-                        f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}train')
+    if aug==True:
+        for a in an:
+            if a['filename']:
+                shutil.copy(f'{parentdir}{os.path.sep}{yo}{os.path.sep}images_augmented{os.path.sep}' + a['filename'],
+                            f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}train')
+    else:        
+        for a in an:
+            if a['filename']:
+                shutil.copy(f'{parentdir}{os.path.sep}{yo}{os.path.sep}images{os.path.sep}' + a['filename'],
+                            f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}train')
     # print(count)
     y = test.to_json(orient='index')
     data_y = json.loads(y)
     ay = list(data_y.values())
     with open(f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}val{os.path.sep}data.json', "w") as json_file:
         json.dump(data_y, json_file)
-    for b in ay:
-        if b['filename']:
-            shutil.copy(
-                f'{parentdir}{os.path.sep}{yo}{os.path.sep}images_augmented{os.path.sep}'+b['filename'],
-                f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}val')
+    if aug==True:
+        for b in ay:
+            if b['filename']:
+                shutil.copy(
+                    f'{parentdir}{os.path.sep}{yo}{os.path.sep}images_augmented{os.path.sep}'+b['filename'],
+                    f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}val')
+    else:
+        for b in ay:
+            if b['filename']:
+                shutil.copy(
+                    f'{parentdir}{os.path.sep}{yo}{os.path.sep}images{os.path.sep}'+b['filename'],
+                    f'{parentdir}{os.path.sep}MRCNN_OUT{os.path.sep}val')
+    
 def yolo():
     file = f'{parentdir}{os.path.sep}current training{os.path.sep}yolo.txt'
     print("Creating File")
